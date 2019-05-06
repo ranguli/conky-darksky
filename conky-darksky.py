@@ -14,7 +14,9 @@ if response.status_code == requests.codes.ok:
     lat_long = str(latitude) + "," + str(longitude)
     city = response.json().get('city')
 else:
-   print(":(") # Error handling TBD
+    with open('.conky-darksky', 'w+') as f:
+        for item in out:
+            f.write(str(":(" + response.status.code) + '\n')
    exit()
 
 # Weather API with 1,000 free calls per day. 
